@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankie Ocean</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background-image: url("BACKGROUND.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container, .textnifrank {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        /* Adjusted the sizes of images */
+        .image-container {
+            width: 500px;
+            height: 500px;
+            background-image: url('HELLO HELLO.png');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px; /* Space between the image and text */
+        }
+
+        .textnifrank {
+            width: 1000px;
+            height: 300px;
+            background-image: url("FRANK_TEXT.png");
+            background-size: cover;
+            background-position: center;
+            margin-top: 20px;
+        }
+
+        /* Hover Effects */
+        .image-container:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .textnifrank:hover {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 0.8;
+        }
+
+        /* Rotating DISC */
+        .DISC {
+            width: 200px;
+            height: 200px;
+            background-image: url("DISC.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            animation: spin 5s linear infinite;
+            cursor: pointer;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Popup box style */
+        .popup {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 250px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            width: 250px;
+            height: 150px;
+            font-size: 18px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .DISC:hover + .popup {
+            display: block;
+        }
+
+        p {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        /* Play/Pause button style */
+        .play-pause-button {
+            background-color: #1DB954;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .play-pause-button:hover {
+            background-color: #1ed760;
+        }
+
+        .radial {
+    height: 150px;
+    width: 200px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px; /* Center text vertically */
+    margin: 4px;
+}
+
+.radial-default {
+    background: radial-gradient(green, yellow, blue);
+}
+    </style>
+</head>
+<body>
+    <div class="image-container"></div>
+    <div class="textnifrank"></div>
+    <div class="DISC"></div>
+    
+
+    <div class="popup">
+        <p>Frank Ocean - Godspeed</p>
+    </div>
+
+    <button class="play-pause-button" id="playPauseBtn">Play Music</button>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="Frank Ocean - Godspeed.mp3" type="audio/mpeg">
+        <source src="Frank Ocean - Godspeed.mp3" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+
+        let isPlaying = false;
+
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                playPauseBtn.textContent = 'Play Music';
+            } else {
+                music.play();
+                playPauseBtn.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        music.volume = 1.0; 
+    </script>
+</body>
+</html>
